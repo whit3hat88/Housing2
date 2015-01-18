@@ -95,6 +95,11 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.vaadin.tapio</groupId>
+            <artifactId>googlemaps</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 
