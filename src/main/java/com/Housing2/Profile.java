@@ -23,7 +23,7 @@ import com.vaadin.ui.Notification.Type;
 /**
  * The Class Profile.
  *
- * @author MWI Wohungsbörse 2014
+ * @author MWI Wohungsbï¿½rse 2014
  * @version 1.0
  * @see com.Housing2.HousingUI
  */
@@ -119,12 +119,12 @@ public class Profile extends HorizontalLayout implements View {
     /**
      * The button_3.
      */
-    private Button button_3;// Änderungen speichern
+    private Button button_3;// ï¿½nderungen speichern
 
     /**
      * The button_4.
      */
-    private Button button_4;// Profil löschen
+    private Button button_4;// Profil lï¿½schen
 
     /*
      * (non-Javadoc)
@@ -164,7 +164,7 @@ public class Profile extends HorizontalLayout implements View {
         NavigationPublic navPublic = new NavigationPublic();
         v.addComponent(navPublic);
 
-        //falls der Benutzer eingelogt ist verändert sich die Navigation
+        //falls der Benutzer eingelogt ist verï¿½ndert sich die Navigation
         if (VaadinSession.getCurrent().getAttribute("login").equals(true)) {
             nav.setVisible(true);
             navPublic.setVisible(false);
@@ -257,7 +257,7 @@ public class Profile extends HorizontalLayout implements View {
         email_1.setRequiredError("Das Feld darf nicht leer sein.");
         email_1.setIcon(FontAwesome.ENVELOPE);
         email_1.setInputPrompt("max.mustermann@test.de");
-        email_1.addValidator(new EmailValidator("Das iste keine gültige E-Mail Adresse."));
+        email_1.addValidator(new EmailValidator("Das iste keine gï¿½ltige E-Mail Adresse."));
         email_1.setEnabled(false);
         emailLayout.addComponent(email_1);
 
@@ -272,7 +272,7 @@ public class Profile extends HorizontalLayout implements View {
         email_2.setRequiredError("Das Feld darf nicht leer sein.");
         email_2.setIcon(FontAwesome.ENVELOPE);
         email_2.setInputPrompt("max.mustermann@test.de");
-        email_2.addValidator(new EmailValidator("Das iste keine gültige E-Mail Adresse."));
+        email_2.addValidator(new EmailValidator("Das iste keine gï¿½ltige E-Mail Adresse."));
         email_2.setVisible(false);
         emailLayout.addComponent(email_2);
 
@@ -342,7 +342,7 @@ public class Profile extends HorizontalLayout implements View {
         dhstud = new CheckBox();
         dhstud.setCaption("Ich bin Dualer Student an der DH Karlsruhe.");
         dhstud.setImmediate(false);
-        dhstud.setDescription("Als Dualer Student können Sie mehr Funktionen nutzen. Moodle Anmeldedaten zur Validierung erforderlich");
+        dhstud.setDescription("Als Dualer Student kï¿½nnen Sie mehr Funktionen nutzen. Moodle Anmeldedaten zur Validierung erforderlich");
         dhstud.setWidth("-1px");
         dhstud.setEnabled(true);
         dhstud.setHeight("-1px");
@@ -353,7 +353,7 @@ public class Profile extends HorizontalLayout implements View {
         dhstud.addValueChangeListener(new ValueChangeListener() {
             @Override
             public void valueChange(final ValueChangeEvent event) {
-                final boolean value = (boolean) event.getProperty().getValue();
+                final boolean value = (event.getProperty().getValue() == Boolean.TRUE);
                 if (value == true) {
                     moodlename.setVisible(true);
                     passwordmoodle.setVisible(true);
@@ -432,14 +432,14 @@ public class Profile extends HorizontalLayout implements View {
         button_2.setCaption("Abbrechen");
         button_2.setIcon(FontAwesome.MAIL_REPLY);
         button_2.setImmediate(true);
-        button_2.setDescription("Abbrechen der Bearbeitung. Ihre Änderungen werden nicht gespeichert.");
+        button_2.setDescription("Abbrechen der Bearbeitung. Ihre ï¿½nderungen werden nicht gespeichert.");
         button_2.setWidth("-1px");
         button_2.setHeight("-1px");
         button_2.setVisible(false);
         content.addComponent(button_2);
         button_2.addClickListener(new Button.ClickListener() {
             public void buttonClick(ClickEvent event) {
-                // ursprüngliche Daten wieder laden
+                // ursprï¿½ngliche Daten wieder laden
                 daten();
                 // Felder ausbelden und nicht bearbeitbar machen
                 button_1.setVisible(true);
@@ -463,10 +463,10 @@ public class Profile extends HorizontalLayout implements View {
         button_3 = new Button();
         button_3.setStyleName("BearbeitenButton");
         button_3.setVisible(false);
-        button_3.setCaption("Änderungen speichern");
+        button_3.setCaption("ï¿½nderungen speichern");
         button_3.setIcon(FontAwesome.SAVE);
         button_3.setImmediate(true);
-        button_3.setDescription("Speichern der Änderungen.");
+        button_3.setDescription("Speichern der ï¿½nderungen.");
         button_3.setWidth("-1px");
         button_3.setHeight("-1px");
         content.addComponent(button_3);
@@ -474,10 +474,10 @@ public class Profile extends HorizontalLayout implements View {
             public void buttonClick(ClickEvent event) {
                 // Validierung der Felder
                 boolean validate = validate();
-                if (validate) {// falls alle Felder richtig ausgefüllt wurden
+                if (validate) {// falls alle Felder richtig ausgefï¿½llt wurden
 
                     User u = VaadinSession.getCurrent().getAttribute(User.class);
-                    User prüf = VaadinSession.getCurrent().getAttribute(User.class);
+                    User pruef = VaadinSession.getCurrent().getAttribute(User.class);
                     u.setIdUser(VaadinSession.getCurrent().getAttribute(User.class).getIdUser());
                     u.setFirstname(prename.getValue());
                     u.setLastname(lastname.getValue());
@@ -487,7 +487,7 @@ public class Profile extends HorizontalLayout implements View {
                     if (dhstud.getValue()) {
                         u.setAccessLevel(1);
                     }
-                    if (!prüf.getEmail().equals(u.getEmail())) {
+                    if (!pruef.getEmail().equals(u.getEmail())) {
 
                         if (new UserProvider().userExists(email_1.getValue())) {
 
@@ -518,7 +518,7 @@ public class Profile extends HorizontalLayout implements View {
                             getUI().getNavigator().addView(name, new Profile());
                             getUI().getNavigator().navigateTo(name);
 
-                            Notification not = new Notification("Ihre Änderungen wurden erfolgreich gespeichert.", Type.HUMANIZED_MESSAGE);
+                            Notification not = new Notification("Ihre ï¿½nderungen wurden erfolgreich gespeichert.", Type.HUMANIZED_MESSAGE);
                             not.setDelayMsec(300);
                             not.setStyleName("success");
                             not.setIcon(FontAwesome.CHECK_SQUARE_O);
@@ -535,7 +535,7 @@ public class Profile extends HorizontalLayout implements View {
                         getUI().getNavigator().addView(name, new Profile());
                         getUI().getNavigator().navigateTo(name);
 
-                        Notification not = new Notification("Ihre Änderungen wurden erfolgreich gespeichert.", Type.HUMANIZED_MESSAGE);
+                        Notification not = new Notification("Ihre ï¿½nderungen wurden erfolgreich gespeichert.", Type.HUMANIZED_MESSAGE);
                         not.setDelayMsec(300);
                         not.setStyleName("success");
                         not.setIcon(FontAwesome.CHECK_SQUARE_O);
@@ -545,7 +545,7 @@ public class Profile extends HorizontalLayout implements View {
                     // Meldung an den Nutzer
                 } else {// Registrierung nicht erfolgreich
 
-                    Notification not = new Notification("Die Speicherung Ihrer Änderungen war nicht erfolgreich. Bitte überprüfen Sie Ihre Eingaben.", Type.HUMANIZED_MESSAGE);
+                    Notification not = new Notification("Die Speicherung Ihrer ï¿½nderungen war nicht erfolgreich. Bitte ï¿½berpruefen Sie Ihre Eingaben.", Type.HUMANIZED_MESSAGE);
                     not.setDelayMsec(300);
                     not.setStyleName("failure");
                     not.show(Page.getCurrent());
@@ -558,9 +558,9 @@ public class Profile extends HorizontalLayout implements View {
         button_4 = new Button();
         button_4.setStyleName("loeschen");
         button_4.setVisible(true);
-        button_4.setCaption("Profil löschen");
+        button_4.setCaption("Profil lï¿½schen");
         button_4.setImmediate(true);
-        button_4.setDescription("Löschen des Profils.");
+        button_4.setDescription("Lï¿½schen des Profils.");
         button_4.setWidth("-1px");
         button_4.setHeight("-1px");
         button_4.setIcon(FontAwesome.TRASH_O);
@@ -568,15 +568,15 @@ public class Profile extends HorizontalLayout implements View {
         button_4.addClickListener(new Button.ClickListener() {
             public void buttonClick(ClickEvent event) {
                 CheckWindow w = new CheckWindow();// Wollen Sie Ihr Profil
-                // wirklich löschen?
-                UI.getCurrent().addWindow(w);// neues Fenster hinzufügen
+                // wirklich lï¿½schen?
+                UI.getCurrent().addWindow(w);// neues Fenster hinzufï¿½gen
             }
 
             // Check Window
             class CheckWindow extends Window {
 
                 public CheckWindow() {
-                    super("Wollen Sie Ihr Profil wirklich löschen?");
+                    super("Wollen Sie Ihr Profil wirklich lï¿½schen?");
                     this.center();
                     this.setHeight("50%");
                     this.setWidth("30%");
@@ -587,14 +587,14 @@ public class Profile extends HorizontalLayout implements View {
 
                     // Hinweistext
                     Label l = new Label(
-                            "Wenn Sie Ihr Profil löschen werden all Ihre Daten gelöscht (inklusive Ihrer angebotenen Wohnungen)!");
+                            "Wenn Sie Ihr Profil lï¿½schen werden all Ihre Daten gelï¿½scht (inklusive Ihrer angebotenen Wohnungen)!");
                     content.addComponent(l);
 
                     // Button "Ja"
                     Button yes = new Button();
                     yes.setStyleName("loeschen");
-                    yes.setCaption("Ja, ich will mein Profil löschen.");
-                    yes.setDescription("Profil löschen");
+                    yes.setCaption("Ja, ich will mein Profil lï¿½schen.");
+                    yes.setDescription("Profil lï¿½schen");
                     yes.setIcon(FontAwesome.CHECK);
                     yes.setWidth("-1px");
                     yes.setHeight("-1px");
@@ -604,7 +604,7 @@ public class Profile extends HorizontalLayout implements View {
                             User u = new UserProvider().findByEmail(VaadinSession.getCurrent().getAttribute(User.class)
                                     .getEmail());// User in der DB suchen
                             new UserProvider().removeUser(u);// User in der DB
-                            // löschen
+                            // lï¿½schen
 
                             // Logout
                             VaadinSession.getCurrent().setAttribute("login", false);
@@ -615,11 +615,11 @@ public class Profile extends HorizontalLayout implements View {
                             getUI().getNavigator().addView(name, new Startseite());
                             getUI().getNavigator().navigateTo(name);
 
-                            // dieses Fenster schließen
+                            // dieses Fenster schlieï¿½en
                             CheckWindow.this.close();
 
                             // Meldung an den Nutzer
-                            Notification notif = new Notification("Ihr Profil wurde gelöscht!", Type.HUMANIZED_MESSAGE);
+                            Notification notif = new Notification("Ihr Profil wurde gelï¿½scht!", Type.HUMANIZED_MESSAGE);
                             notif.setDelayMsec(300);
                             notif.setStyleName("success");
                             notif.setIcon(FontAwesome.INFO);
@@ -632,13 +632,13 @@ public class Profile extends HorizontalLayout implements View {
                     no.setStyleName("loeschen");
                     no.setCaption("Nein, doch nicht.");
                     no.setIcon(FontAwesome.MAIL_REPLY);
-                    no.setDescription("Profil nicht löschen");
+                    no.setDescription("Profil nicht lï¿½schen");
                     no.setWidth("-1px");
                     no.setHeight("-1px");
                     content.addComponent(no);
                     no.addClickListener(new Button.ClickListener() {
                         public void buttonClick(ClickEvent event) {
-                            CheckWindow.this.close();// Fenster schließen
+                            CheckWindow.this.close();// Fenster schlieï¿½en
                         }
                     });
 
@@ -648,7 +648,7 @@ public class Profile extends HorizontalLayout implements View {
             }
         });
 
-        daten();// Felder mit Daten befüllen
+        daten();// Felder mit Daten befï¿½llen
     }
 
     /**
@@ -709,16 +709,16 @@ public class Profile extends HorizontalLayout implements View {
         }
 
         if (!email_1.getValue().equals(email_2.getValue())) {
-            email_1.setComponentError(new UserError("Die beiden E-Mail Adressen stimmen nicht überein."));
-            email_2.setComponentError(new UserError("Die beiden E-Mail Adressen stimmen nicht überein."));
+            email_1.setComponentError(new UserError("Die beiden E-Mail Adressen stimmen nicht ï¿½berein."));
+            email_2.setComponentError(new UserError("Die beiden E-Mail Adressen stimmen nicht ï¿½berein."));
             erfolgreich = false;
         }
 
         if (!password_1.getValue().equals(password_2.getValue())) {
             System.out.println(password_1.getValue());
             System.out.println(password_2.getValue());
-            password_1.setComponentError(new UserError("Die beiden Passwörter stimmen nicht überein."));
-            password_2.setComponentError(new UserError("Die beiden Passwörter stimmen nicht überein."));
+            password_1.setComponentError(new UserError("Die beiden Passwï¿½rter stimmen nicht ï¿½berein."));
+            password_2.setComponentError(new UserError("Die beiden Passwï¿½rter stimmen nicht ï¿½berein."));
             erfolgreich = false;
         }
 
