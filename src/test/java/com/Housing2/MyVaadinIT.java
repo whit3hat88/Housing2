@@ -54,7 +54,7 @@ public class MyVaadinIT extends TestBenchTestCase {
      * Opens the URL where the application is deployed.
      */
     private void openTestUrl() {
-        getDriver().get("http://localhost:8080/Housing2");
+        getDriver().get("http://193.196.7.216:8080/wohnung");
     }
 
     @Test

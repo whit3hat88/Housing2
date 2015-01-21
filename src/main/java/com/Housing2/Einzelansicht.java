@@ -26,14 +26,10 @@ import java.util.List;
  */
 public class Einzelansicht extends HorizontalLayout implements View {
 
-    /**
-     * The content.
-     */
+    /** The content. */
     VerticalLayout content;
 
-    /**
-     * The angebot.
-     */
+    /** The angebot. */
     Offer angebot;
 
     /**
@@ -41,11 +37,10 @@ public class Einzelansicht extends HorizontalLayout implements View {
      *
      * @param einzelAngebot the einzel angebot
      */
-    public Einzelansicht(Offer einzelAngebot) {
+    public Einzelansicht(Offer einzelAngebot){
         this.angebot = einzelAngebot;
 
         content = new VerticalLayout();
-//		content = (VerticalLayout)this;
 
         content.setMargin(true);
         content.setSizeFull();
@@ -74,10 +69,10 @@ public class Einzelansicht extends HorizontalLayout implements View {
         v.addComponent(navPublic);
 
         //falls der Benutzer eingelogt ist verändert sich die Navigation
-        if (VaadinSession.getCurrent().getAttribute("login").equals(true)) {
+        if(VaadinSession.getCurrent().getAttribute("login").equals(true)){
             nav.setVisible(true);
             navPublic.setVisible(false);
-        } else {
+        }else{
             nav.setVisible(false);
             navPublic.setVisible(true);
         }
@@ -117,18 +112,18 @@ public class Einzelansicht extends HorizontalLayout implements View {
      * Sets the content.
      */
     @SuppressWarnings("deprecation")
-    public void setContent() {
+    public void setContent(){
 
         //titel
         String titel = angebot.getTitle();
-        Label lTitel = new Label(titel + " Ort: " + angebot.getCity());
+        Label lTitel= new Label(titel + " Ort: " +angebot.getCity());
         lTitel.addStyleName("ImportantTitle");
         content.addComponent(lTitel);
 
         //Adresse wird nur verifizierten Studenten angezeigt
-        if (VaadinSession.getCurrent().getAttribute("login").equals(true)) {
+        if(VaadinSession.getCurrent().getAttribute("login").equals(true)) {
 
-            if (VaadinSession.getCurrent().getAttribute(User.class).getAccessLevel() == 1) {
+            if(VaadinSession.getCurrent().getAttribute(User.class).getAccessLevel() == 1) {
 
                 // if(VaadinSession.getCurrent().getAttribute("login").equals(true)){
 
@@ -139,20 +134,25 @@ public class Einzelansicht extends HorizontalLayout implements View {
                 Label lAdress = new Label("Straße: " + street + "  PLZ: " + zip + "  Ort: " + city);
 
                 content.addComponent(lAdress);
+
             } else {
+
                 String zip = angebot.getZip();
 
                 Label lAdress = new Label("PLZ: " + zip + "  Die volle Adresse ist nur für verifizierte Studenten sichtbar.");
 
                 content.addComponent(lAdress);
+
             }
 
         } else {
+
             String zip = angebot.getZip();
 
             Label lAdress = new Label("PLZ: " + zip + "  Die volle Adresse ist nur für verifizierte Studenten sichtbar.");
 
             content.addComponent(lAdress);
+
         }
 
         //pictures
@@ -167,13 +167,13 @@ public class Einzelansicht extends HorizontalLayout implements View {
         Resource resource4 = new FileResource(new File(basepath + "/WEB-INF/image/DefaultBild.jpg"));
         Resource resource5 = new FileResource(new File(basepath + "/WEB-INF/image/DefaultBild.jpg"));
 
-        switch (angebot.getPhotos().size()) {
+        switch(angebot.getPhotos().size()) {
             case 5:
 
                 resource5 = new StreamResource(new StreamResource.StreamSource() {
                     @Override
-                    public InputStream getStream() {
-                        return new ByteArrayInputStream(angebot.getPhotos().get(4).getPhoto());
+                    public InputStream getStream(){
+                        return new ByteArrayInputStream(angebot.getPhotos().get(4).getPicture());
                     }
                 }, "Bild_5");
 
@@ -181,8 +181,8 @@ public class Einzelansicht extends HorizontalLayout implements View {
 
                 resource4 = new StreamResource(new StreamResource.StreamSource() {
                     @Override
-                    public InputStream getStream() {
-                        return new ByteArrayInputStream(angebot.getPhotos().get(3).getPhoto());
+                    public InputStream getStream(){
+                        return new ByteArrayInputStream(angebot.getPhotos().get(3).getPicture());
                     }
                 }, "Bild_4");
 
@@ -190,8 +190,8 @@ public class Einzelansicht extends HorizontalLayout implements View {
 
                 resource3 = new StreamResource(new StreamResource.StreamSource() {
                     @Override
-                    public InputStream getStream() {
-                        return new ByteArrayInputStream(angebot.getPhotos().get(2).getPhoto());
+                    public InputStream getStream(){
+                        return new ByteArrayInputStream(angebot.getPhotos().get(2).getPicture());
                     }
                 }, "Bild_3");
 
@@ -199,8 +199,8 @@ public class Einzelansicht extends HorizontalLayout implements View {
 
                 resource2 = new StreamResource(new StreamResource.StreamSource() {
                     @Override
-                    public InputStream getStream() {
-                        return new ByteArrayInputStream(angebot.getPhotos().get(1).getPhoto());
+                    public InputStream getStream(){
+                        return new ByteArrayInputStream(angebot.getPhotos().get(1).getPicture());
                     }
                 }, "Bild_2");
 
@@ -208,34 +208,34 @@ public class Einzelansicht extends HorizontalLayout implements View {
 
                 resource = new StreamResource(new StreamResource.StreamSource() {
                     @Override
-                    public InputStream getStream() {
-                        return new ByteArrayInputStream(angebot.getPhotos().get(0).getPhoto());
+                    public InputStream getStream(){
+                        return new ByteArrayInputStream(angebot.getPhotos().get(0).getPicture());
                     }
                 }, "Bild_1");
 
         }
 
-        Image image = new Image("", resource);
+        Image image = new Image("",resource);
         image.setWidth("388px");
         image.setHeight("314px");
-        Image image2 = new Image("", resource2);
+        Image image2 = new Image("",resource2);
         image2.setWidth("169px");
         image2.setHeight("144px");
-        Image image3 = new Image("", resource3);
+        Image image3 = new Image("",resource3);
         image3.setWidth("169px");
         image3.setHeight("144px");
-        Image image4 = new Image("", resource4);
+        Image image4 = new Image("",resource4);
         image4.setWidth("169px");
         image4.setHeight("144px");
-        Image image5 = new Image("", resource5);
+        Image image5 = new Image("",resource5);
         image5.setWidth("169px");
         image5.setHeight("144px");
 
         gridPictures.addComponent(image, 0, 0, 3, 3);
-        gridPictures.addComponent(image2, 4, 0, 5, 1);
-        gridPictures.addComponent(image3, 6, 0, 7, 1);
-        gridPictures.addComponent(image4, 4, 2, 5, 3);
-        gridPictures.addComponent(image5, 6, 2, 7, 3);
+        gridPictures.addComponent(image2, 4, 0 ,5,1);
+        gridPictures.addComponent(image3, 6, 0, 7,1);
+        gridPictures.addComponent(image4, 4, 2, 5,3);
+        gridPictures.addComponent(image5, 6, 2, 7,3);
         gridPictures.setWidth("40%");
 
 
@@ -251,7 +251,7 @@ public class Einzelansicht extends HorizontalLayout implements View {
         });
         content.addComponent(plus);
 
-        final GridLayout gridInfos = new GridLayout(2, 16);
+        final GridLayout gridInfos = new GridLayout(2,16);
         //	gridInfos.setWidth("60%");
         content.addComponent(gridInfos);
 
@@ -263,38 +263,38 @@ public class Einzelansicht extends HorizontalLayout implements View {
         Label start = new Label("Startdatum");
         start.setWidth("388px");
         gridInfos.addComponent(start, 0, 0);
-        gridInfos.addComponent(startDate, 1, 0);
+        gridInfos.addComponent(startDate, 1,0);
 
 
         DateField endDate = new DateField();
         endDate.setValue(angebot.getEndDate());
         endDate.setEnabled(false);
-        gridInfos.addComponent(new Label("Enddatum"), 0, 1);
-        gridInfos.addComponent(endDate, 1, 1);
+        gridInfos.addComponent(new Label("Enddatum"), 0,1);
+        gridInfos.addComponent(endDate, 1,1);
 
         //Size
         float sm = angebot.getSquareMetre();
         String sSm = new Format().stringFormat(sm) + "m²";
 
-        gridInfos.addComponent(new Label("Größe"), 0, 2);
-        gridInfos.addComponent(new Label(sSm), 1, 2);
+        gridInfos.addComponent(new Label("Größe"),0,2);
+        gridInfos.addComponent(new Label(sSm),1 , 2);
 
         //Price
-        float price = angebot.getPrice();
+        float price =  angebot.getPrice();
         String sPrice = new Format().stringEuro(price) + " ?";
 
-        gridInfos.addComponent(new Label("Warmmiete"), 0, 3);
-        gridInfos.addComponent(new Label(sPrice), 1, 3);
+        gridInfos.addComponent(new Label("Warmmiete"),0,3);
+        gridInfos.addComponent(new Label(sPrice),1 , 3);
 
         //IsShared
         int a = angebot.getType();
         String s = "";
-        if (a == 1) {
+        if(a ==1){
             s = "Wohnung";
-        } else if (a == 2) {
+        }else if(a ==2){
             s = "Zimmer";
-        } else if (a == 3) {
-            s = "WG-Zimmer";
+        }else if(a == 3){
+            s="WG-Zimmer";
         }
         gridInfos.addComponent(new Label("Art der Unterkunft: "), 0, 4);
         gridInfos.addComponent(new Label(s), 1, 4);
@@ -307,58 +307,60 @@ public class Einzelansicht extends HorizontalLayout implements View {
         //Internet
         CheckBox hasInternet = new CheckBox("");
         gridInfos.addComponent(new Label("Internet"), 0, 6);
-        gridInfos.addComponent(hasInternet, 1, 6);
+        gridInfos.addComponent(hasInternet, 1,6);
         hasInternet.setEnabled(false);
-        hasInternet.setValue(angebot.isInternet());
+        hasInternet.setValue( angebot.isInternet());
 
         //furnished
         CheckBox isFurnished = new CheckBox("");
         gridInfos.addComponent(new Label("Möbliert"), 0, 7);
-        gridInfos.addComponent(isFurnished, 1, 7);
+        gridInfos.addComponent(isFurnished, 1,7);
         isFurnished.setEnabled(false);
-        isFurnished.setValue(angebot.isFurnished());
+        isFurnished.setValue( angebot.isFurnished());
 
         //kitchen
         CheckBox useKitchen = new CheckBox("");
         gridInfos.addComponent(new Label("Küchenmitbenutzung"), 0, 8);
-        gridInfos.addComponent(useKitchen, 1, 8);
+        gridInfos.addComponent(useKitchen, 1,8);
         useKitchen.setEnabled(false);
-        useKitchen.setValue(angebot.isKitchen());
+        useKitchen.setValue( angebot.isKitchen());
 
         //smoker
         CheckBox smokingAllowed = new CheckBox("");
         gridInfos.addComponent(new Label("Raucher"), 0, 9);
-        gridInfos.addComponent(smokingAllowed, 1, 9);
+        gridInfos.addComponent(smokingAllowed, 1,9);
         smokingAllowed.setEnabled(false);
         smokingAllowed.setValue(angebot.isSmoker());
 
         //pets
         CheckBox petsAllowed = new CheckBox("");
         gridInfos.addComponent(new Label("Haustiere erlaubt"), 0, 10);
-        gridInfos.addComponent(petsAllowed, 1, 10);
+        gridInfos.addComponent(petsAllowed, 1,10);
         petsAllowed.setEnabled(false);
         petsAllowed.setValue(angebot.isPets());
 
         //male / female
         Label maleFemale = new Label("");
         int g = angebot.getGender();
-        if (g == 1) {
+        if( g==1){
             maleFemale.setValue("egal");
-        } else if (g == 2) {
+        }
+        else if (g == 2){
             maleFemale.setValue("männlich");
-        } else if (g == 3)
+        }
+        else if ( g == 3)
             maleFemale.setValue("weiblich");
         gridInfos.addComponent(new Label("Bevorzugtes Geschlecht"), 0, 11);
-        gridInfos.addComponent(maleFemale, 1, 11);
+        gridInfos.addComponent(maleFemale, 1,11);
 
 
         //bond
-        float bond = angebot.getBond();
+        float bond =  angebot.getBond();
         String sBond = new Format().stringEuro(bond) + " ?";
 
         Label lBond = new Label("Kaution");
-        gridInfos.addComponent(lBond, 0, 12);
-        gridInfos.addComponent(new Label(sBond), 1, 12);
+        gridInfos.addComponent(lBond,0,12);
+        gridInfos.addComponent(new Label(sBond),1 , 12);
 
 
         //text
@@ -369,12 +371,12 @@ public class Einzelansicht extends HorizontalLayout implements View {
         t.setEnabled(false);
         t.setWidth("338px");
         gridInfos.addComponent(new Label("Beschreibung  "), 0, 13);
-        gridInfos.addComponent(t, 1, 13);
+        gridInfos.addComponent(t, 1,13);
 
 
         //Bearbeiten- und Löschen-Button
-        if (VaadinSession.getCurrent().getAttribute("login").equals(true)) {
-            if (VaadinSession.getCurrent().getAttribute(User.class).getEmail().equals(angebot.getOffer_idUser().getEmail())) {
+        if(VaadinSession.getCurrent().getAttribute("login").equals(true)){
+            if(VaadinSession.getCurrent().getAttribute(User.class).getEmail().equals(angebot.getOffer_idUser().getEmail())){
 
                 HorizontalLayout userButtons = new HorizontalLayout();
 
@@ -402,7 +404,7 @@ public class Einzelansicht extends HorizontalLayout implements View {
                 userButtons.addComponent(change);
                 userButtons.addComponent(delete);
 
-                gridInfos.addComponent(userButtons, 0, 14);
+                gridInfos.addComponent(userButtons, 0 , 14);
 
             }
         }
@@ -414,27 +416,27 @@ public class Einzelansicht extends HorizontalLayout implements View {
         anfrage.addStyleName("AnfrageButton");
         anfrage.setIcon(FontAwesome.MAIL_FORWARD);
         buttons.addComponent(anfrage);
-        if (angebot.isInactive()) {
+        if(angebot.isInactive()){
             anfrage.setEnabled(false);
         }
 
         anfrage.addClickListener(new Button.ClickListener() {
             public void buttonClick(ClickEvent event) {
-                if (VaadinSession.getCurrent().getAttribute("login").equals(false)) {
-                    Notification not = new Notification("Sie müssen sich als verifizierter DH-Student einloggen, um eine Anfrage zu einem Wohnungsangebot stellen zu können!", Type.HUMANIZED_MESSAGE);//Meldung an den Nutzer
+                if(VaadinSession.getCurrent().getAttribute("login").equals(false)) {
+                    Notification not = new Notification("Sie müssen sich als verifizierter DH-Student einloggen, um eine Anfrage zu einem Wohnungsangebot stellen zu können!",Type.HUMANIZED_MESSAGE);//Meldung an den Nutzer
                     not.setStyleName("failure");
                     not.setDelayMsec(300);
                     not.show(Page.getCurrent());
                 } else if (VaadinSession.getCurrent().getAttribute(User.class).getAccessLevel() != 1) {
-                    Notification not = new Notification("Sie müssen sich als DH-Student verifizieren, um eine Anfrage zu einem Wohnungsangebot stellen zu können!", Type.HUMANIZED_MESSAGE);//Meldung an den Nutzer
+                    Notification not = new Notification("Sie müssen sich als DH-Student verifizieren, um eine Anfrage zu einem Wohnungsangebot stellen zu können!",Type.HUMANIZED_MESSAGE);//Meldung an den Nutzer
                     not.setDelayMsec(300);
                     not.setStyleName("failure");
                     not.show(Page.getCurrent());
-                } else if (VaadinSession.getCurrent().getAttribute("login").equals(true)) {
+                } else if(VaadinSession.getCurrent().getAttribute("login").equals(true)){
 
-                    if (new RequestProvider().requestExists(VaadinSession.getCurrent().getAttribute(User.class), angebot)) {
+                    if(new RequestProvider().requestExists(VaadinSession.getCurrent().getAttribute(User.class), angebot)){
 
-                        Notification not = new Notification("Sie haben den Anbieter bereits kontaktiert", Type.HUMANIZED_MESSAGE);//Meldung an den Nutzer
+                        Notification not = new Notification("Sie haben den Anbieter bereits kontaktiert",Type.HUMANIZED_MESSAGE);//Meldung an den Nutzer
                         not.setDelayMsec(300);
                         not.setStyleName("failure");
                         not.show(Page.getCurrent());//+re.getMessage());
@@ -449,11 +451,17 @@ public class Einzelansicht extends HorizontalLayout implements View {
         });
 
 
+
+
+
+
+
+
         final FavoritProvider fp = new FavoritProvider();
 
 
         //Favoriten-Button TODO
-        if (VaadinSession.getCurrent().getAttribute("login").equals(true) && !fp.favoritExists(VaadinSession.getCurrent().getAttribute(User.class), angebot)) {
+        if(VaadinSession.getCurrent().getAttribute("login").equals(true) && !fp.favoritExists(VaadinSession.getCurrent().getAttribute(User.class), angebot)){
 
             Button favorit = new Button("Favorit hinzufügen");
             favorit.setIcon(FontAwesome.PLUS_SQUARE_O);
@@ -481,7 +489,7 @@ public class Einzelansicht extends HorizontalLayout implements View {
                 }
             });
 
-        } else if (VaadinSession.getCurrent().getAttribute("login").equals(true) && fp.favoritExists(VaadinSession.getCurrent().getAttribute(User.class), angebot)) {
+        }else if(VaadinSession.getCurrent().getAttribute("login").equals(true) && fp.favoritExists(VaadinSession.getCurrent().getAttribute(User.class), angebot)){
 
             Button removeFavorit = new Button("Favorit entfernen");
             removeFavorit.setIcon(FontAwesome.TRASH_O);
@@ -511,32 +519,36 @@ public class Einzelansicht extends HorizontalLayout implements View {
         }
 
 
+
         gridInfos.addComponent(buttons, 1, 14);
 
 
         //Anzeigen, wenn man Anbieter bereits kontaktiert hat
 
 
+
         //Anzeigen, wenn man Anbieter bereits kontaktiert hat
 
 
-        if (VaadinSession.getCurrent().getAttribute("login").equals(true)) {
+
+
+        if(VaadinSession.getCurrent().getAttribute("login").equals(true)){
             User u = VaadinSession.getCurrent().getAttribute(User.class);
             List<Request> r;
-            r = u.getRequests();
+            r= u.getRequests();
 
-            boolean b = false;
-            int in = 0;
+            boolean b= false;
+            int in=0;
 
-            for (int i = 0; i < r.size(); i++) {
-                if (r.get(i).getRequest_idOffer().getIdOffer() == angebot.getIdOffer()) {
+            for(int i = 0; i<r.size();i++){
+                if(r.get(i).getRequest_idOffer().getIdOffer()==angebot.getIdOffer()){
                     b = true;
                     in = i;
                 }
             }
-            if (b) {
-                Label l = new Label("Sie haben den Anbieter bereits kontaktiert mit dem folgenden Text: " + r.get(in).getMessage());
-                gridInfos.addComponent(l, 0, 15);
+            if(b){
+                Label l = new Label("Sie haben den Anbieter bereits kontaktiert mit dem folgenden Text: " +r.get(in).getMessage());
+                gridInfos.addComponent(l,0,15);
             }
 
         }

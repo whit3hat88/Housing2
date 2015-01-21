@@ -3,32 +3,25 @@ package com.Housing2.data.model;
 import javax.persistence.*;
 
 // TODO: Auto-generated Javadoc
-
 /**
  * The Class Photo.
  */
 @Entity
-@Table(name = "Photo")
+@Table(name="Photo")
 public class Photo {
 
-    /**
-     * The id photo.
-     */
+    /** The id photo. */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer idPhoto;
 
-    /**
-     * The picture.
-     */
+    /** The picture. */
     @Lob
     private byte[] picture;
 
-    /**
-     * The photo_id offer.
-     */
+    /** The photo_id offer. */
     @ManyToOne
-    @JoinColumn(name = "photo_idOffer")
+    @JoinColumn(name="photo_idOffer")
     private Offer photo_idOffer;
 
     /**
@@ -54,17 +47,17 @@ public class Photo {
      *
      * @return the photo
      */
-    public byte[] getPhoto() {
+    public byte[] getPicture() {
         return picture;
     }
 
     /**
      * Sets the photo.
      *
-     * @param photo the new photo
+     * @param picture the new photo
      */
-    public void setPhoto(byte[] photo) {
-        this.picture = photo;
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
     /**

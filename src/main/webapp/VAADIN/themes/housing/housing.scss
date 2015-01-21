@@ -13,6 +13,8 @@
   height: 30px;
 }
 
+
+
 // Defines the border used by all components.
 //$v-border: 1px solid (v-shade 0.7);
 //$v-border-radius: 4px;
@@ -35,8 +37,9 @@
 // For more information, see: https://vaadin.com/book/-/page/themes.valo.html
 // Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
 
+
 $v-background-color: #F7F7F7;
-$v-focus-color: #e2001a;
+$v-focus-color:#e2001a;
 $v-app-margin-top: 0px;
 $v-app-loading-text: "Seite wird geladen...";
 $v-font-family: "Source Sans Pro", sans-serif;
@@ -53,25 +56,6 @@ $v-font-family: "Source Sans Pro", sans-serif;
     box-shadow: none;
   }
 
-  .v-panel-red {
-    //background-color: #7e878e;
-    background-color: #e2001a;
-    box-shadow: none;
-    border: 0px;
-    border-radius: 0px;
-  }
-
-  .v-verticallayout-navigation {
-    margin-top: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-  }
-
-  .v-horizontallayout-footer {
-    margin-top: 0px;
-    padding-top: 0px;
-    //padding-bottom:0px;
-  }
 
   .v-label-title {
     font-size: 30px;
@@ -79,33 +63,185 @@ $v-font-family: "Source Sans Pro", sans-serif;
     margin-bottom: 20px;
   }
 
-  .v-textfield {
+  .v-textfield{
     margin-bottom: 15px;
     margin-right: 30px;
   }
 
-  //Ganzes UI
 
-  .v-ui {
-    text-align: center;
+  //Grobaufbau der Seite (rote Panels)
+  .v-panel-red {
+    //background-color: #7e878e;
+    //background-color: #e2001a;
+    background-color:#E65C5C;
+    box-shadow: none;
+    border: 0px;
+    border-radius: 0px;
   }
-  //Startseite
-  .v-panel-startseite {
-    .v-panel-caption {
+
+  //Layout der Navigationsleiste
+  .v-verticallayout-navigation{
+    margin-top:0px;
+    padding-top: 0px;
+    padding-bottom:0px;
+  }
+
+  //Layout der Fu�zeile
+  .v-horizontallayout-footer{
+    margin-top:0px;
+    padding-top: 0px;
+    //padding-bottom:0px;
+  }
+
+
+  //Bilder
+
+  .v-window-image{//gesamtes ImageWindow
+    .v-window-caption{
       font-size: 16px;
     }
   }
 
-  .v-accordion-startseite {
+  .v-verticallayout-picture{//einzelne gro�e Ansicht eines Bildes
+    background-color: #F7F7F7;
+    -webkit-border-radius: 10px;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    position: relative;
+    width: 700px;
+    height: 438px;
+    overflow: hidden;
+  }
+
+  .v-horizontallayout-picture{//Layout f�r kleine Ansicht der Bilder
+    overflow: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    list-style: none;
+    position: relative;
+    background: #7e878e;
+    overflow: auto;
+    width: 700px;
+  }
+
+  .v-image-im {//einzelnes kleines Bild
+    -webkit-transition: opacity .2s ease-in-out;
+    border: 1px solid #979797;
+    width: 35px;
+    height: 35px;
+    display: block;
+    overflow: hidden;
+    float: right;
+    margin: 10px 0px 0px 10px;
+    opacity: 0.75;
+  }
+
+  .v-image-im:hover {//Mouse-Hover kleines Bild
+    opacity: 1;
+    border-color:#e2001a;
+    cursor:pointer;
+  }
+
+  .v-image-active{//keines Bild wird angeklickt (ausgew�hlt)
+    border: 1px solid #979797;
+    width: 35px;
+    height: 35px;
+    display: block;
+    overflow: hidden;
+    float: right;
+    margin: 10px 0px 0px 10px;
+
+    opacity: 1;
+    border-color:#e2001a;
+  }
+
+  .v-button-im {//Navigationsbuttons
+    -webkit-transition: opacity .2s ease-in-out;
+    border: 1px solid #979797;
+    display: block;
+    overflow: hidden;
+    float: right;
+    margin: 10px 0px 0px 10px;
+    opacity: 0.75;
+  }
+
+  .v-button-im:hover {//Mose-Hover Navigationsbuttons
+    opacity: 1;
+    border-color:#e2001a;
+    cursor:pointer;
+  }
+
+  .v-panel-im{//Panel zwischen kleinen Bildern und Navigationsbuttons
+    background: #7e878e;
+    box-shadow: none;
+    border: 0px;
+  }
+
+  //f�r Einblenden der Gro�ansicht eines Bildes
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .v-image-animate{
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+  }
+
+  .v-verticallayout-box {//Rahmen f�r die Bilder
+    text-align: left;
+    width: 700px;
+    margin: 0px auto 0 auto;
+    background: #7e878e;
+    overflow: hidden;
+    border: 5px solid #7e878e;
+    -webkit-box-shadow: #131313 0px 2px 10px;
+    -moz-box-shadow: #131313 0px 3px 10px;
+    box-shadow: #131313 0px 3px 10px;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 0s;
+  }
+
+
+
+
+  //Ganzes UI
+
+  .v-ui {
+    text-align:center;
+  }
+  //Startseite
+  .v-panel-startseite{
+    .v-panel-caption{
+      font-size: 16px;
+    }
+  }
+
+  .v-accordion-startseite{
     .v-accordion-item-caption .v-caption {
       font-size: 16px;
     }
 
   }
 
+
+
   //Profil
-  .v-button-loeschen {
-    margin-top: 30px;
+  .v-button-loeschen{
+    margin-top:10px;
     color: #e2001a;
     border-color: #e2001a;
   }
@@ -116,44 +252,44 @@ $v-font-family: "Source Sans Pro", sans-serif;
     font-weight: bolder;
   }
 
-  .v-button-BearbeitenButton {
-    margin-top: 10px;
+  .v-button-BearbeitenButton{
+    margin-top:10px;
   }
 
-  .v-button-AnfrageButton {
-    margin-top: 10px;
+  .v-button-AnfrageButton{
+    margin-top:10px;
   }
 
   //Suche
-  .v-layout-LayoutSuche {
-    padding: 20px;
+  .v-layout-LayoutSuche{
+    padding:20px;
   }
-  .v-label-suchLabel {
+  .v-label-suchLabel{
     font-size: 30px;
     font-weight: bolder;
     margin-bottom: 10px;
   }
-  .v-button-SuchButton {
-    margin-top: 20px;
+  .v-button-SuchButton{
+    margin-top:20px;
   }
 
   //AngebotErstellen
-  .v-button-Button {
-    margin-top: 10px;
+  .v-button-Button{
+    margin-top:10px;
   }
 
-  .v-label-AbschnittLabel {
+  .v-label-AbschnittLabel{
     font-size: 20px;
     font-weight: bolder;
     margin-bottom: 10px;
   }
 
-  .v-label-AngeboteTextField {
+  .v-label-AngeboteTextField{
     font-size: 10px;
   }
 
   //AngebotAnzeigen
-  .v-label-ÜberschriftLabel {
+  .v-label-�berschriftLabel{
     font-size: 20px;
     font-weight: bolder;
     margin-bottom: 10px;
@@ -175,5 +311,5 @@ $v-font-family: "Source Sans Pro", sans-serif;
 
   }
 
-}
 
+}

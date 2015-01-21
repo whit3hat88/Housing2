@@ -27,7 +27,7 @@ import com.vaadin.ui.Notification.Type;
 /**
  * The Class Registrierung.
  *
- * @author MWI Wohungsbï¿½rse 2014
+ * @author MWI Wohungsb?rse 2014
  * @version 1.0
  * @see com.Housing2.HousingUI
  */
@@ -145,7 +145,7 @@ public class Registrierung extends HorizontalLayout implements View {
         NavigationPublic navPublic = new NavigationPublic();
         v.addComponent(navPublic);
 
-        //falls der Benutzer eingelogt ist verï¿½ndert sich die Navigation
+        //falls der Benutzer eingelogt ist ver?ndert sich die Navigation
         if (VaadinSession.getCurrent().getAttribute("login").equals(true)) {
             nav.setVisible(true);
             navPublic.setVisible(false);
@@ -239,7 +239,7 @@ public class Registrierung extends HorizontalLayout implements View {
         email_1.setRequiredError("Das Feld darf nicht leer sein.");
         email_1.setIcon(FontAwesome.ENVELOPE);
         email_1.setInputPrompt("max.mustermann@test.de");
-        email_1.addValidator(new EmailValidator("Das iste keine gï¿½ltige E-Mail Adresse."));
+        email_1.addValidator(new EmailValidator("Das iste keine g?ltige E-Mail Adresse."));
         emailLayout.addComponent(email_1);
 
         // email_2
@@ -253,7 +253,7 @@ public class Registrierung extends HorizontalLayout implements View {
         email_2.setRequiredError("Das Feld darf nicht leer sein.");
         email_2.setIcon(FontAwesome.ENVELOPE);
         email_2.setInputPrompt("max.mustermann@test.de");
-        email_2.addValidator(new EmailValidator("Das iste keine gï¿½ltige E-Mail Adresse."));
+        email_2.addValidator(new EmailValidator("Das iste keine g?ltige E-Mail Adresse."));
         emailLayout.addComponent(email_2);
 
         content.addComponent(emailLayout);
@@ -303,7 +303,7 @@ public class Registrierung extends HorizontalLayout implements View {
         dhstud = new CheckBox();
         dhstud.setCaption("Ich bin Dualer Student an der DH Karlsruhe.");
         dhstud.setImmediate(false);
-        dhstud.setDescription("Als Dualer Student kï¿½nnen Sie mehr Funktionen nutzen. Moodle Anmeldedaten zur Validierung erforderlich");
+        dhstud.setDescription("Als Dualer Student k?nnen Sie mehr Funktionen nutzen. Moodle Anmeldedaten zur Validierung erforderlich");
         dhstud.setWidth("-1px");
         dhstud.setHeight("-1px");
         content.addComponent(dhstud);
@@ -312,7 +312,7 @@ public class Registrierung extends HorizontalLayout implements View {
             @Override
             public void valueChange(final ValueChangeEvent event) {
                 final boolean value = (event.getProperty().getValue() == Boolean.TRUE);
-                if (value == true) {//Anzeigen der Moodle Felder sobald das Kontrollkï¿½stchen angekreuzt wird
+                if (value == true) {//Anzeigen der Moodle Felder sobald das Kontrollk?stchen angekreuzt wird
                     moodlename.setVisible(true);
                     passwordmoodle.setVisible(true);
                     moodlename.setRequired(true);
@@ -320,7 +320,7 @@ public class Registrierung extends HorizontalLayout implements View {
                     passwordmoodle.setRequired(true);
                     passwordmoodle.setRequiredError("Das Feld darf nicht leer sein.");
 
-                } else {//ausblednen der Felder wenn das Kï¿½stchen nicht angekreuzt ist
+                } else {//ausblednen der Felder wenn das K?stchen nicht angekreuzt ist
                     moodlename.setVisible(false);
                     passwordmoodle.setVisible(false);
                     moodlename.setRequired(false);
@@ -356,7 +356,7 @@ public class Registrierung extends HorizontalLayout implements View {
         agbs = new CheckBox();
         agbs.setCaption("Ich akzeptiere die ");
         agbs.setImmediate(false);
-        agbs.setDescription("Sie mï¿½ssen die AGBs akzeptieren damit Sie sich registrieren kï¿½nnen");
+        agbs.setDescription("Sie m?ssen die AGBs akzeptieren damit Sie sich registrieren k?nnen");
         agbs.setWidth("-1px");
         agbs.setHeight("-1px");
         content.addComponent(agbs);
@@ -375,13 +375,13 @@ public class Registrierung extends HorizontalLayout implements View {
         button = new Button();
         button.setStyleName("speichern");
         button.setIcon(FontAwesome.SAVE);
-        button.setCaption("Registrierung abschlieï¿½en");
+        button.setCaption("Registrierung abschlie?en");
         button.setImmediate(true);
-        button.setDescription("Abschlieï¿½en der Registrierung, danach kï¿½nnen Sie sich anmelden");
+        button.setDescription("Abschlie?en der Registrierung, danach k?nnen Sie sich anmelden");
         button.setWidth("-1px");
         button.setHeight("-1px");
         content.addComponent(button);
-        //Abschlieï¿½en der Registrierung
+        //Abschlie?en der Registrierung
         button.addClickListener(new Button.ClickListener() {
             public void buttonClick(ClickEvent event) {
 
@@ -399,7 +399,7 @@ public class Registrierung extends HorizontalLayout implements View {
 
                 //Validierung der Felder
                 boolean validate = validate();
-                if (validate) {//falls alle Felder richtig ausgefï¿½llt wurden
+                if (validate) {//falls alle Felder richtig ausgef?llt wurden
                     if (new UserProvider().userExists(email_1.getValue().toString()) == false) {//der Nutzer existiert noch nicht
                         //Werte in der DB speichern
                         safeToDB();
@@ -426,7 +426,7 @@ public class Registrierung extends HorizontalLayout implements View {
 
 
                 } else {//Registrierung nicht erfolgreich
-                    Notification not = new Notification("Die Registrierung war nicht erfolgreich. Bitte ï¿½berprï¿½fen Sie Ihre Eingaben.", Type.HUMANIZED_MESSAGE);//Meldung an den Nutzer
+                    Notification not = new Notification("Die Registrierung war nicht erfolgreich. Bitte ?berpr?fen Sie Ihre Eingaben.", Type.HUMANIZED_MESSAGE);//Meldung an den Nutzer
                     not.setStyleName("failure");
                     not.setDelayMsec(300);
                     not.show(Page.getCurrent());
@@ -491,8 +491,8 @@ public class Registrierung extends HorizontalLayout implements View {
         }
 
         if (!email_1.getValue().equals(email_2.getValue())) {
-            email_1.setComponentError(new UserError("Die beiden E-Mail Adressen stimmen nicht ï¿½berein."));
-            email_2.setComponentError(new UserError("Die beiden E-Mail Adressen stimmen nicht ï¿½berein."));
+            email_1.setComponentError(new UserError("Die beiden E-Mail Adressen stimmen nicht ?berein."));
+            email_2.setComponentError(new UserError("Die beiden E-Mail Adressen stimmen nicht ?berein."));
             erfolgreich = false;
         }
 
@@ -500,8 +500,8 @@ public class Registrierung extends HorizontalLayout implements View {
         if (!password_1.getValue().equals(password_2.getValue())) {
             System.out.println(password_1.getValue());
             System.out.println(password_2.getValue());
-            password_1.setComponentError(new UserError("Die beiden Passwï¿½rter stimmen nicht ï¿½berein."));
-            password_2.setComponentError(new UserError("Die beiden Passwï¿½rter stimmen nicht ï¿½berein."));
+            password_1.setComponentError(new UserError("Die beiden Passw?rter stimmen nicht ?berein."));
+            password_2.setComponentError(new UserError("Die beiden Passw?rter stimmen nicht ?berein."));
             erfolgreich = false;
         }
 
@@ -513,7 +513,7 @@ public class Registrierung extends HorizontalLayout implements View {
         }
 
         if (!agbs.getValue()) {
-            agbs.setComponentError(new UserError("Sie mï¿½ssen die AGBs akzeptieren um sich anmelden zu kï¿½nnen."));
+            agbs.setComponentError(new UserError("Sie m?ssen die AGBs akzeptieren um sich anmelden zu k?nnen."));
             erfolgreich = false;
         } else {
             agbs.setComponentError(null);
@@ -531,13 +531,13 @@ public class Registrierung extends HorizontalLayout implements View {
     public void sendEMail() {
         // Text der E-Mail mit Style-Informationen
         String body = "<span style='color: #000000' 'font-family: Arial, sans-serif''font-size: 16pt' >Sehr geehrte Nutzerin, sehr geehrter Nutzer,"
-                + "<br/><br/>vielen Dank, dass Sie sich fï¿½r uns entschieden haben. Damit Sie sich erstmalig anmelden kï¿½nnen, folgen Sie bitte dem folgenden Link. Dadurch wird sichergestellt, dass keine Unbefungten Ihre E-Mail-Adresse dazu verwenden kï¿½nnen, um sich bei uns zu registrieren.</span>"
+                + "<br/><br/>vielen Dank, dass Sie sich für uns entschieden haben. Damit Sie sich erstmalig anmelden können, folgen Sie bitte dem folgenden Link. Dadurch wird sichergestellt, dass keine Unbefungten Ihre E-Mail-Adresse dazu verwenden können, um sich bei uns zu registrieren.</span>"
                 + "<br/><span style='color: #e2001a' 'font-family: Arial, sans-serif''font-size: 20pt' >"
-                + "<a href='http://localhost:8080/housing/servlet/com.example.housing.HousingUI$Servlet#!Startseite/" + email_1.getValue() + "'>weiter zum Login</a>"
+                + "<a href='http://193.196.7.216:8080/wohnung/com.Housing2.HousingUI$Servlet#!Startseite/" + email_1.getValue() + "'>weiter zum Login</a>"
                 //+"http://localhost:8080/housing/servlet/com.example.housing.HousingUI$Servlet#!Startseite/"+email_1.getValue()
-                + "</span><br/><br/>Mit freundlichen Grï¿½ï¿½en<br/>Ihr DHBW Wohungsbï¿½rsen-Team<p/><span style='color: #e2001a' 'font-family: Arial, sans-serif''font-size: 8pt' >Anschrift:<br/>DHBW Karlsruhe<br/>Baden-Wuerttemberg Cooperative State University Karlsruhe<br />Erzbergerstraï¿½e 121 . 76133 Karlsruhe <br />Postfach 10 01 36 . 76231 Karlsruhe   <br />Telefon +49.721.9735-5 <br />Telefax +49.721.9735-600 <br />E-Mail: dreischer@dhbw-karlsruhe.de<br /><br/><br/>Ansprechpartner:<br/> <br />Dr. Anita Dreischer<br /><br/><b>Copyright DHBW Karlsruhe. Alle Rechte vorbehalten.</b></span>";
+                + "</span><br/><br/>Mit freundlichen Grüßen<br/>Ihr DHBW Wohungsbörsen-Team<p/><span style='color: #e2001a' 'font-family: Arial, sans-serif''font-size: 8pt' >Anschrift:<br/>DHBW Karlsruhe<br/>Baden-Wuerttemberg Cooperative State University Karlsruhe<br />Erzbergerstra?e 121 . 76133 Karlsruhe <br />Postfach 10 01 36 . 76231 Karlsruhe   <br />Telefon +49.721.9735-5 <br />Telefax +49.721.9735-600 <br />E-Mail: dreischer@dhbw-karlsruhe.de<br /><br/><br/>Ansprechpartner:<br/> <br />Dr. Anita Dreischer<br /><br/><b>Copyright DHBW Karlsruhe. Alle Rechte vorbehalten.</b></span>";
         //E-Mail senden
-        SendEMail.send(email_1.getValue(), "wohnungsboerse_dh@web.de", "Danke fï¿½r Ihre Registrierung", body);
+        SendEMail.send(email_1.getValue(), "wohnungsboerse_dh@web.de", "Danke für Ihre Registrierung", body);
     }
 
 }

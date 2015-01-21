@@ -16,7 +16,7 @@ import com.vaadin.ui.Notification.Type;
 /**
  * The Class ForgotPasswordWindow.
  *
- * @author MWI Wohungsbörse 2014
+ * @author MWI Wohungsb?rse 2014
  * @version 1.0
  * @see com.Housing2.Registrierung
  */
@@ -137,7 +137,7 @@ public class ForgotPasswordWindow extends Window {
                     //1. User aus der Datenbank auslesen
                     User u = new UserProvider().findByEmail(email_1.getValue());
 
-                    //2. Validate: Passwörter sind gleich?
+                    //2. Validate: Passw?rter sind gleich?
                     if (validate()) {
                         u.setPassword(password_1.getValue());//neues Passwort setzen
                         u.setActivated(false);//Nutzer deaktivieren
@@ -146,14 +146,14 @@ public class ForgotPasswordWindow extends Window {
                         //E-Mail an den Nutzer senden
                         sendEMail();
 
-                        ForgotPasswordWindow.this.close();//Fenster schließen
-                        Notification notif = new Notification("Ihr Passwort wurde geändert", "Bitte folgen Sie dem Link in der E-Mail, die Sie erhalten haben.", Type.HUMANIZED_MESSAGE);
+                        ForgotPasswordWindow.this.close();//Fenster schlie?en
+                        Notification notif = new Notification("Ihr Passwort wurde ge?ndert", "Bitte folgen Sie dem Link in der E-Mail, die Sie erhalten haben.", Type.HUMANIZED_MESSAGE);
                         notif.setDelayMsec(300);
                         notif.setIcon(FontAwesome.CHECK_SQUARE_O);
                         notif.setStyleName("success");
                         notif.show(Page.getCurrent());
                     } else {
-                        Notification notif = new Notification("Änderung des Passworts fehlgeschlagen!", "Bitte überprüfen Sie Ihre Eingaben.", Type.HUMANIZED_MESSAGE);
+                        Notification notif = new Notification("?nderung des Passworts fehlgeschlagen!", "Bitte ?berpr?fen Sie Ihre Eingaben.", Type.HUMANIZED_MESSAGE);
                         notif.setDelayMsec(300);
                         notif.setStyleName("failure");
                         notif.show(Page.getCurrent());
@@ -161,7 +161,7 @@ public class ForgotPasswordWindow extends Window {
 
                 } catch (Exception e) {
                     //Fehlermeldung bei Datenbankproblemen
-                    Notification notif = new Notification("Änderung des Passworts fehlgeschlagen!", "Es gibt keinen Nutzer mit dieser E-Mail-Adresse.", Type.HUMANIZED_MESSAGE);
+                    Notification notif = new Notification("?nderung des Passworts fehlgeschlagen!", "Es gibt keinen Nutzer mit dieser E-Mail-Adresse.", Type.HUMANIZED_MESSAGE);
                     notif.setDelayMsec(300);
                     notif.setStyleName("failure");
                     notif.show(Page.getCurrent());
@@ -181,7 +181,7 @@ public class ForgotPasswordWindow extends Window {
 
         cancel.addClickListener(new Button.ClickListener() {
             public void buttonClick(ClickEvent event) {
-                ForgotPasswordWindow.this.close();//Fenster schließen
+                ForgotPasswordWindow.this.close();//Fenster schlie?en
             }
         });
 
@@ -189,7 +189,7 @@ public class ForgotPasswordWindow extends Window {
         hl.addComponent(save);
         content.addComponent(hl);
 
-        text = new Label("Wenn Sie Ihr neues Passwort speichern erhalten Sie eine E-Mail an die angegebene E-Mail-Adresse. Um Sich erneut einloggen zu können folgen Sie bitte dem Link in der E-Mail.");
+        text = new Label("Wenn Sie Ihr neues Passwort speichern erhalten Sie eine E-Mail an die angegebene E-Mail-Adresse. Um Sich erneut einloggen zu k?nnen folgen Sie bitte dem Link in der E-Mail.");
         content.addComponent(text);
 
         this.setContent(content);
@@ -208,7 +208,7 @@ public class ForgotPasswordWindow extends Window {
     public boolean validate() {
         boolean erfolgreich = true;//wird auf false gesetzt, falls ein Wert nicht richtig ist
 
-        //sind alle Pflichtfelder gefüllt?
+        //sind alle Pflichtfelder gef?llt?
         try {
             email_1.validate();
         } catch (InvalidValueException e) {
@@ -227,7 +227,7 @@ public class ForgotPasswordWindow extends Window {
             erfolgreich = false;
         }
 
-        //sind die beiden Passwörter gleich?
+        //sind die beiden Passw?rter gleich?
         if (!password_1.getValue().equals(password_2.getValue())) {
             System.out.println(password_1.getValue());
             System.out.println(password_2.getValue());
@@ -250,8 +250,8 @@ public class ForgotPasswordWindow extends Window {
         String body = "<span style='color: #000000' 'font-family: Arial, sans-serif''font-size: 16pt' >Sehr geehrte Nutzerin, sehr geehrter Nutzer,"
                 + "<br/><br/>Sie haben Ihr Passwort vergessen und ein neues Passwort angegeben. Ihr Konto muss erneut freigeschalten werden. Bitte folgen sie dem Link unten, dann können Sie sich wieder wie gewohnt einloggen.Dadurch wird sichergestellt, dass keine Unbefungten Ihre E-Mail-Adresse und Ihr Benutzerkonto verwenden können.</span>"
                 + "<br/><span style='color: #e2001a' 'font-family: Arial, sans-serif''font-size: 20pt' >"
-                + "<a href='http://localhost:8080/housing/servlet/com.example.housing.HousingUI$Servlet#!Startseite/" + email_1.getValue() + "'>weiter zum Login</a>"
-                + "</span><br/><br/>Mit freundlichen Grüßen<br/>Ihr DHBW Wohungsbörsen-Team<p/><span style='color: #e2001a' 'font-family: Arial, sans-serif''font-size: 8pt' >Anschrift:<br/>DHBW Karlsruhe<br/>Baden-Wuerttemberg Cooperative State University Karlsruhe<br />Erzbergerstraße 121 . 76133 Karlsruhe <br />Postfach 10 01 36 . 76231 Karlsruhe   <br />Telefon +49.721.9735-5 <br />Telefax +49.721.9735-600 <br />E-Mail: dreischer@dhbw-karlsruhe.de<br /><br/><br/>Ansprechpartner:<br/> <br />Dr. Anita Dreischer<br /><br/><b>Copyright DHBW Karlsruhe. Alle Rechte vorbehalten.</b></span>";
+                + "<a href='http://193.196.7.216:8080/wohnung/com.Housing2.HousingUI$Servlet#!Startseite/" + email_1.getValue() + "'>weiter zum Login</a>"
+                + "</span><br/><br/>Mit freundlichen Grüßen<br/>Ihr DHBW Wohungsbörsen-Team<p/><span style='color: #e2001a' 'font-family: Arial, sans-serif''font-size: 8pt' >Anschrift:<br/>DHBW Karlsruhe<br/>Baden-Wuerttemberg Cooperative State University Karlsruhe<br />Erzbergerstra?e 121 . 76133 Karlsruhe <br />Postfach 10 01 36 . 76231 Karlsruhe   <br />Telefon +49.721.9735-5 <br />Telefax +49.721.9735-600 <br />E-Mail: dreischer@dhbw-karlsruhe.de<br /><br/><br/>Ansprechpartner:<br/> <br />Dr. Anita Dreischer<br /><br/><b>Copyright DHBW Karlsruhe. Alle Rechte vorbehalten.</b></span>";
         //E-Mail senden
         SendEMail.send(email_1.getValue(), "wohnungsboerse_dh@web.de", "Passwort vergessen", body);
     }

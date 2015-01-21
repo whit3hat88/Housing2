@@ -387,11 +387,11 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     } else if (shared.equals("WG-Zimmer")) {
                         type = 3;
                     }
-                } catch (NullPointerException e) {// tut nichts, fängt nur
+                } catch (NullPointerException e) {// tut nichts, f?ngt nur
                     // NullPointerException ab
                 }
 
-                // Überprüft ob es ein bevorzugtes Geschlecht gibt und setzt
+                // ?berpr?ft ob es ein bevorzugtes Geschlecht gibt und setzt
                 // entsprechenden int-Wert
                 int gender = 1;
                 try {
@@ -407,7 +407,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     // NullPointerException ab
                 }
 
-                if (valid) {// sind alle Mussfelder gefüllt, wird ein neues
+                if (valid) {// sind alle Mussfelder gefällt, wird ein neues
                     // Angebot erstellt
                     currentOffer.setOffer_idUser(VaadinSession.getCurrent().getAttribute(User.class));
                     currentOffer.setTitle(titel.getValue());
@@ -415,7 +415,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     currentOffer.setZip(zip.getValue());
                     currentOffer.setCity(city.getValue());
                     currentOffer.setStartDate(startDate.getValue());
-                    try { // überprüft ob ein Enddatum angegeben ist, da die
+                    try { // ?berpr?ft ob ein Enddatum angegeben ist, da die
                         // Angabe optional ist
                         currentOffer.setEndDate(endDate.getValue());
                     } catch (NullPointerException e) {
@@ -432,7 +432,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     currentOffer.setGender(gender);
                     currentOffer.setText(text.getValue());
 
-                    try {// überprüft ob eine Kaution angegeben ist, da die
+                    try {// ?berpr?ft ob eine Kaution angegeben ist, da die
                         // Angabe optional ist
                         currentOffer.setBond(new Format().floatFormat(bond.getValue()));
                     } catch (NumberFormatException e) {
@@ -451,7 +451,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     getUI().getNavigator().navigateTo(name);
 
                 } else
-                    // Sind nicht alle Mussfelder gefüllt, wird eine Nachricht
+                    // Sind nicht alle Mussfelder gef?llt, wird eine Nachricht
                     // auf dem Bildschirm ausgegeben
                     Notification.show("");
                 Notification not1 = new Notification("Bitte füllen Sie alle Mussfelder*", Type.HUMANIZED_MESSAGE);
@@ -465,7 +465,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
         abbrechen.addStyleName("BearbeitenButton");
         abbrechen.setCaption("Abbrechen");
         abbrechen.setImmediate(true);
-        abbrechen.setDescription("Abbrechen der Bearbeitung. Ihre Änderungen werden nicht gespeichert.");
+        abbrechen.setDescription("Abbrechen der Bearbeitung. Ihre änderungen werden nicht gespeichert.");
         abbrechen.addClickListener(new Button.ClickListener() {
             public void buttonClick(ClickEvent event) {
 
@@ -694,8 +694,8 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
         save.addStyleName("BearbeitenButton");
         save.addClickListener(new Button.ClickListener() {
             public void buttonClick(ClickEvent event) {
-                // Überprüfung ob alle Mussfelder gefüllt sind
-                boolean valid = true; // fals ein Mussfeld nicht gefüllt ist
+                // ?berpr?fung ob alle Mussfelder gef?llt sind
+                boolean valid = true; // fals ein Mussfeld nicht gef?llt ist
                 // wird valid = false gesetzt
                 try {
                     titel.validate();
@@ -758,7 +758,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     valid = false;
                 }
 
-                // Überprüft welche Art Angebot erstellt wird und setzt
+                // ?berpr?ft welche Art Angebot erstellt wird und setzt
                 // entsprechenden int-Wert
                 int type = 1;
                 try {
@@ -770,11 +770,11 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     } else if (shared.equals("WG-Zimmer")) {
                         type = 3;
                     }
-                } catch (NullPointerException e) {// tut nichts, fängt nur
+                } catch (NullPointerException e) {// tut nichts, f?ngt nur
                     // NullPointerException ab
                 }
 
-                // Überprüft ob es ein bevorzugtes Geschlecht gibt und setzt
+                // ?berpr?ft ob es ein bevorzugtes Geschlecht gibt und setzt
                 // entsprechenden int-Wert
                 int gender = 1;
                 try {
@@ -786,7 +786,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     } else if (gend.equals("weiblich")) {
                         gender = 3;
                     }
-                } catch (NullPointerException e) {// tut nichts, fängt nur
+                } catch (NullPointerException e) {// tut nichts, f?ngt nur
                     // NullPointerException ab
                 }
 
@@ -801,7 +801,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     currentOffer.setZip(zip.getValue());
                     currentOffer.setCity(city.getValue());
                     currentOffer.setStartDate(startDate.getValue());
-                    try { // überprüft ob ein Enddatum angegeben ist, da die
+                    try { // Überprüft ob ein Enddatum angegeben ist, da die
                         // Angabe optional ist
                         currentOffer.setEndDate(endDate.getValue());
                     } catch (NullPointerException e) {
@@ -818,7 +818,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                     currentOffer.setGender(gender);
                     currentOffer.setText(text.getValue());
 
-                    try {// überprüft ob eine Kaution angegeben ist, da die
+                    try {// Überprüft ob eine Kaution angegeben ist, da die
                         // Angabe optional ist
                         currentOffer.setBond(new Format().floatFormat(bond.getValue()));
                     } catch (NumberFormatException e) {
@@ -834,7 +834,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
                         getUI().getNavigator().addView(name, new Einzelansicht(o));
                         getUI().getNavigator().navigateTo(name);
                     } else {
-                        Notification not = new Notification("Das Angebot konnte nicht geändert werden.", Type.HUMANIZED_MESSAGE);
+                        Notification not = new Notification("Das Angebot konnte nicht ge?ndert werden.", Type.HUMANIZED_MESSAGE);
                         not.setStyleName("warning");
                         not.setIcon(FontAwesome.EXCLAMATION_TRIANGLE);
                         not.setDelayMsec(300);
@@ -857,7 +857,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
         abbrechen.addStyleName("BearbeitenButton");
         abbrechen.setCaption("Abbrechen");
         abbrechen.setImmediate(true);
-        abbrechen.setDescription("Abbrechen der Bearbeitung. Ihre Änderungen werden nicht gespeichert.");
+        abbrechen.setDescription("Abbrechen der Bearbeitung. Ihre änderungen werden nicht gespeichert.");
         abbrechen.addClickListener(new Button.ClickListener() {
             public void buttonClick(ClickEvent event) {
 
@@ -923,7 +923,7 @@ public class AngebotErstellen extends VerticalLayout implements View, Receiver, 
 
             Photo newPhoto = new Photo();
             newPhoto.setPhoto_idOffer(currentOffer);
-            newPhoto.setPhoto(tmpImg.toByteArray());
+            newPhoto.setPicture(tmpImg.toByteArray());
 
             try {
                 newPhotos.add(newPhoto);

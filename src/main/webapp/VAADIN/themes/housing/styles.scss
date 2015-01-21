@@ -6,4 +6,5 @@
 .housing {
   @include addons;
   @include housing;
+  @include styles;
 }
